@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+//  変数を定義する
+  List<String> titleList = ['amazon','楽天','Yahoo'];
   int _counter = 0;
 
   void _incrementCounter() {
@@ -44,32 +46,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       // ListView　縦に並ぶ、スクロールができる
       body: ListView(
-        children: const [
-          Text('こんばんわ'),
-          ListTile(
+        children: [
+          Text(titleList[0]),
+          const ListTile(
             leading: Icon(Icons.key),
             title: Text('amazon'),
           ),
+          Divider(height: 0,),
           ListTile(
             leading: Icon(Icons.key),
             title: Text('楽天'),
           ),
+          Divider(height: 0,),
           ListTile(
             leading: Icon(Icons.key),
             title: Text('Yahoo'),
           ),
+          Divider(height: 0,),
 
 
         ],
