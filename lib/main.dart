@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'next_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -48,33 +50,38 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title:const Text("テスト"),
       ),
       // ListView　縦に並ぶ、スクロールができる
-      body: ListView(
-        children: [
-          Text(titleList[0]),
-          const ListTile(
-            leading: Icon(Icons.key),
-            title: Text('amazon'),
-          ),
-          Divider(height: 0,),
-          ListTile(
-            leading: Icon(Icons.key),
-            title: Text('楽天'),
-          ),
-          Divider(height: 0,),
-          ListTile(
-            leading: Icon(Icons.key),
-            title: Text('Yahoo'),
-          ),
-          Divider(height: 0,),
-
-
-        ],
+      body:ListView.builder(
+          itemCount: titleList.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.key),
+                  title: Text(titleList[index]),
+                  onTap: (){
+                    print('リストがタップされました');
+                    //画面遷移のコード　呪文みたいな感じ
+                    Navigator.push(context, MaterialPageRoute(
+                         builder: (context) => const NextPage()));
+                  },
+                ),
+                const Divider(height: 0,),
+              ],
+            );
+          }
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          titleList.add('google');
+        print(titleList);
+        setState(() {
+
+        });
+          },
+
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
