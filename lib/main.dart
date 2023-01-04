@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     print('リストがタップされました');
                     //画面遷移のコード　呪文みたいな感じ
                     Navigator.push(context, MaterialPageRoute(
-                         builder: (context) => const NextPage()));
+                         builder: (context) => NextPage(titleList[index])));
                   },
                 ),
                 const Divider(height: 0,),
